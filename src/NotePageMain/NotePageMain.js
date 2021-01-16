@@ -14,6 +14,7 @@ export default class NotePageMain extends React.Component {
 
   handleDeleteNote = noteId => {
     this.props.history.push(`/`)
+    // console.log('note delete from NPmain parent')
   }
 
   render() {

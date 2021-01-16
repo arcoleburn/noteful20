@@ -21,18 +21,18 @@ export default class AddNote extends Component {
       date_modified: new Date(),
     }
     console.log('new note from submit', newNote)
-    fetch(`${config.API_ENDPOINT}/note`, {
+    fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify(newNote),
-    })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
-      })
+    }).then(res=>res.json())
+      // .then(res => {
+      //   if (!res.ok)
+      //     return res.json().then(e => Promise.reject(e))
+      //   return res.json()
+      // })
       .then(note => {
         this.context.addNote(note)
         this.props.history.push(`/folder/${note.folderId}`)

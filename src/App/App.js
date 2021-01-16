@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import NoteListNav from '../NoteListNav/NoteListNav'
 import NotePageNav from '../NotePageNav/NotePageNav'
@@ -63,6 +63,7 @@ class App extends Component {
     this.setState({
       notes: this.state.notes.filter(note => note.id !== noteId)
     })
+    console.log('history from app', this.props.history)
     this.props.history.push('/')
   }
 
@@ -150,4 +151,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withRouter(App)
